@@ -1,0 +1,15 @@
+SELECT av.avaliacao_id,AV.DISCIPLINA_ID, av.turma_aluno_id,P.pfisica_nome, AV.avaliacao_nota,av.rel_diagnostico,av.rel_final,av.STATUS
+
+FROM  AVALIACAO AV
+
+INNER JOIN TURMA_ALUNO T ON t.turma_aluno_id = av.turma_aluno_id
+INNER JOIN ALUNO A ON A.aluno_id = t.aluno_id
+INNER JOIN TURMA TU ON TU.turma_id = T.turma_id
+INNER JOIN pfisica P ON P.pfisica_id = A.pfisica_id
+
+
+
+WHERE AV.avaliacao_ano = :ParametroAno  AND
+TU.TURMA_ID = :ParametroTurma  and AV.gaval_id = :ParametroUnidade
+
+ORDER BY AV.DISCIPLINA_ID
